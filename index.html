@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    .change-style {
+      width: 100px;
+      text-align: center;
+      position: relative;
+    }
+    .bgcolor {
+      color: #faa;
+    }
+    .change-style::after {
+      position: absolute;
+      content: '';
+      height: 2px;
+      width: 0;
+      background-color: aqua;
+      bottom: 0;
+      left: 50%;
+      transition: all 1s;
+    }
+    .bgcolor::after{
+      width: 100%;
+      left: 0;
+    }
+    .active{
+      color: #faa;
+    }
+  </style>
+</head>
+<body>
+  <button id="btn">切换</button>
+  <div class="change-style">点击变色</div>
+  
+  <a id="ooo" href="/abt" onclick="activeClass()">点击</a>
+  <script>
+    function activeClass() {
+      console.log('222')
+      let el = document.getElementById('ooo')
+      el.setAttribute('class', 'active')
+    }
+    let menus = document.querySelector('.change-style');
+    document.getElementById('btn').onclick = function(){
+      console.log(menus.className.indexOf('bgcolor'))
+      if(menus.className.indexOf('bgcolor') === -1){
+        menus.classList.add('bgcolor')
+      }else{
+        menus.classList.remove('bgcolor')
+      }
+    }
+  </script>
+</body>
+</html>
